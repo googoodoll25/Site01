@@ -7,17 +7,177 @@
     <!-- CSS only -->
     <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css.css') }}" rel="stylesheet">
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand">Navbar</a>
-          <form class="d-flex">
-            <button class="btn btn-outline-primary" type="submit">Realtime</button>
-            <button class="btn btn-outline-success" type="submit">Report</button>
-          </form>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img id="navber_logo" src="{{ url_for('static', filename='logo_doh.png') }}" alt="" width="60" height="60" class="d-inline-block align-top">
+        <span id="nav_text">สำนักงานควบคุมน้ำหนักยานพาหนะ กรมทางหลวง</span>
+      </a>
+      <form class="d-flex">
+        <button class="btn btn-primary bt_realtime" formaction="{{ url_for('index') }}" >Realtime</button>   
+        <button class="btn btn-outline-secondary bt_report" formaction="{{ url_for('report') }}">Report</button> 
+      </form>
+    </div>
+  </nav>
+
+  <div class="container_web">
+    <p id="date_text">ข้อมูลประจำวันที่ : {{ date }}</p>
+
+    <!-- Big Main -->
+    <div class="row">
+      <div class="col-lg-3">
+        <img id="img_overview" src="{{ url_for('static', filename='pic1.png') }}" alt="">
+        <img id="img_lpr" src="{{ url_for('static', filename='pic2.png') }}" alt="">
+      </div><!-- col-lg-3 -->
+
+      <div class="col-lg-3">
+        
+        <table class="table table-borderless table-sm ">
+          <tbody>
+          <tr>
+            <td>Datetime</td>
+            <td id="color_text">14-01-2021 11:18:59</td>
+          </tr>
+          <tr>
+            <td>ประเภท</td>
+            <td id="color_text">[ 9.3 ] - รถกึ่งพ่วง 6 เพลา 22 ล้อ (47 ตัน)</td>
+          </tr>
+          <tr>
+            <td>ทะเบียน</td>
+            <td id="color_text">70-1234 นครสวรรค์</td>
+          </tr>
+          <tr>
+            <td>เลน</td>
+            <td id="color_text">1</td>
+          </tr>
+          <tr>
+            <td>ความเร็ว</td>
+            <td id="color_text">45 Km/H</td>
+          </tr>
+          <tr>
+            <td>พิกัด</td>
+            <td id="color_text">50500 KG</td>
+          </tr>
+          <tr>
+            <td>น้ำหนัก</td>
+            <td id="color_text">48888 KG</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td id="color_text">PASS</td>
+          </tr>
+          </tbody>
+        </table>
+        <br>
+
+        <div>
+          <img id="img_class" src="{{ url_for('static' , filename='truck01.png') }}" alt="">
         </div>
-      </nav>
+      </div><!-- Col-lg-3-->
+
+      <div class="col-lg-3">
+
+        <p style="text-align: center;">กราฟแสดงค่าน้ำหนัก / เพลา</p>
+
+        <canvas id="myChart" width="400" height="300"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+      </div><!-- Col-lg-3 -->
+
+      <div class="col-lg-3">
+
+        <p style="text-align: center;">กราฟแสดงค่าน้ำหนัก / เพลา</p>
+
+        <canvas id="myChart2" width="400" height="300"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+      </div><!-- Col-lg-3 -->
+
+
+    </div><!-- Div.Row.Big Main-->
+
+  </div><!-- Container Web-->
+
 
     <!-- JavaScript Bundle with Popper -->
 <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>

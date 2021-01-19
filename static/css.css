@@ -1,7 +1,121 @@
-body {
-  background-color: black;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500&family=Raleway&display=swap');
+
+/* kanit-regular - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/kanit-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Kanit Regular'), local('Kanit-Regular'),
+    url('../fonts/kanit-v6-latin-regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE6-IE8 */ url('../fonts/kanit-v6-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../fonts/kanit-v6-latin-regular.woff')
+      format('woff'),
+    /* Modern Browsers */ url('../fonts/kanit-v6-latin-regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */ url('../fonts/kanit-v6-latin-regular.svg#Kanit')
+      format('svg'); /* Legacy iOS */
 }
 
+body {
+  background-color: black;
+  font-family: 'Kanit', sans-serif;
+  color: aliceblue;
+}
+.container_web {
+  padding-right: 20px;
+  padding-left: 20px;
+}
 .navbar {
   background-color: #1e1d1d;
+  height: 55px;
+}
+.navbar img {
+  margin-top: -15px;
+}
+.navbar span {
+  font-size: 15px;
+  color: rgb(194, 192, 192);
+}
+.navbar .bt_realtime {
+  margin-bottom: 15px;
+  background-color: #22cbf6;
+  color: black;
+  border-color: #22cbf6;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+.navbar .bt_report {
+  margin-bottom: 15px;
+  background-color: #363636;
+  color: white;
+  border-color: #cacaca;
+  border-radius: 25px;
+  margin-right: 50px;
+}
+#date_text {
+  font-size: 12px;
+  padding-top: 5px;
+}
+#img_overview {
+  max-width: 250px;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border-color: #cacaca;
+  border-style: outset; */
+}
+#img_lpr {
+  max-width: 250px;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border-color: #cacaca;
+  border-style: outset; */
+}
+.container_web table {
+  color: aliceblue;
+  font-size: 12px;
+}
+
+#color_text {
+  color: #60d2ee;
+}
+
+#img_class {
+  max-width: 180px;
+}
+
+/* For Mobile */
+@media screen and (max-width: 540px) {
+  .navbar span {
+    display: none;
+  }
+  .navbar .bt_report {
+    margin-bottom: 15px;
+    background-color: #363636;
+    color: white;
+    border-color: #cacaca;
+    border-radius: 25px;
+    margin-right: 10px;
+  }
+}
+
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 780px) {
+  .navbar span {
+    display: none;
+  }
+  .navbar .bt_report {
+    margin-bottom: 15px;
+    background-color: #363636;
+    color: white;
+    border-color: #cacaca;
+    border-radius: 25px;
+    margin-right: 10px;
+  }
 }
